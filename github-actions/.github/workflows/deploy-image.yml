@@ -1,0 +1,59 @@
+name: Build and Publish Docker Images
+
+on:
+  push:
+    branches:
+      - main  # Apenas constroi ao fazer push para a branch principal
+
+env:
+  REGISTRY: ghcr.io # GitHub Container Registry (GHCR)
+  REPO: github-actions # Nome do repositório no GHCR
+  FLASK_IMAGE_NAME: api-flask # Nome da imagem do Flask criada utilizando a build do Dockerfile.flask 
+  CELERY_IMAGE_NAME: api-celery
+
+jobs:
+  build-and-push-images:
+    runs-on: ubuntu-latest # Sistema operacional utilizado para rodar o job
+    permissions:
+      contents: read # Permissões para ler e escrever o conteúdo do repositório
+      packages: write
+
+    steps:
+      - name: Checkout repository # Passo para clonar o repositório
+        uses: actions/checkout@v3 # Utiliza a action para clonar o repositório
+ 
+      - name: Log in to GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }} # Utiliza o GHCR como registry
+          username: ${{ github.actor }} 
+          password: ghp_XkdpPTG0t32193210kdawokdwa3218217321=0R44a3215g7o7M # Token de acesso do GitHub
+
+      - name: Extract metadata (tags, labels) for Docker # Passo para extrair metadados das imagens Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |  # Imagens que serão utilizadas para extrair os metadados
+            ${{ env.REGISTRY }}/${{ env.REPO }}/${{ env.FLASK_IMAGE_NAME }} 
+            ${{ env.REGISTRY }}/${{ env.REPO }}/${{ env.CELERY_IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=sha
+
+      - name: Build and Push Flask Image # Passo para construir e publicar a imagem do Flask
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          file: Dockerfile.flask
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and Push Celery Image # Passo para construir e publicar a imagem do Celery
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          file: Dockerfile.celery 
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

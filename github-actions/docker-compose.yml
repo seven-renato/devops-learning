@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask  
+    environment:
+      FLASK_APP: run
+      FLASK_DEBUG: 1
+    ports:
+      - "8050:8050"
+
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile.celery
+    environment:
+      FLASK_APP: run
+      DATABASE_URL: ${DATABASE_URL}
+    depends_on:
+      - redis
