@@ -9,9 +9,9 @@ Este repositório demonstra como configurar o GitHub Actions para automatizar a 
 │   └── deploy-image.yml
 
 
-O diretório `.github` contém os arquivos de configuração do GitHub Actions. O subdiretório `workflows` contém os arquivos YAML que definem os workflows do GitHub Actions. O arquivo `build-and-publish-images.yml` define o workflow para construir e publicar as imagens Docker.
+O diretório `.github` contém os arquivos de configuração do GitHub Actions. O subdiretório `workflows` contém os arquivos YAML que definem os workflows do GitHub Actions. O arquivo `deploy-image.yml` define o workflow para construir e publicar as imagens Docker.
 
-## Workflow `build-and-publish-images.yml`
+## Workflow `deploy-image.yml`
 
 Este workflow é acionado sempre que há um push para a branch principal (`main`). Ele executa as seguintes etapas:
 
