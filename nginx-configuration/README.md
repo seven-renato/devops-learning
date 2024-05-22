@@ -19,7 +19,38 @@ O servidor web Nginx é configurado para lidar com conexões HTTP e HTTPS, redir
 - Uso de arquivos estáticos e definições de pastas;
 - Definição de qualidade e segurança da aplicação;
 
-## Exemplo de Nginx.conf
+## Definição de docker-compose para gerar o certificado SSL
+```yaml
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80" # Porta HTTP
+      - "443:443" # Porta HTTPS
+    volumes: # Mapeamento de volumes para o container NGINX, onde os arquivos de configuração e os arquivos estáticos são montados
+      - .docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - .docker/nginx/html:/usr/share/nginx/html
+      - .docker/nginx/html/static:/usr/share/nginx/html/static # Mapeamento do volume para os arquivos estáticos
+      - .docker/certbot/conf:/etc/letsencrypt # Volumes de configuração do certbot para o NGINX
+      - .docker/certbot/www:/var/www/certbot 
+    restart: unless-stopped
+    depends_on: # Dependência do container NGINX para que o container certbot seja iniciado antes 
+      - certbot 
+
+  certbot:
+    image: certbot/certbot # Imagem do certbot
+    container_name: certbot
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email example@email.com --agree-tos -d seven-renato.com.br # Comando para gerar o certificado SSL sempre que o container for iniciado
+    # Com esse comando se torna possivel adquirir o certificado para o dominio devido, além de possuir também outros parâmetros possiveis de serem colocados para configuração de DNS e subdomínios
+    volumes:
+      - .docker/certbot/conf:/etc/letsencrypt
+      - .docker/certbot/www:/var/www/certbot
+    restart: on-failure
+```
+
+## Exemplo de Nginx.conf para utilização do HTTPs gerado pelo Certbot
 
 ```bash
 events {
