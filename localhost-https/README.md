@@ -90,7 +90,7 @@ http {
         ssl_certificate_key /etc/nginx/certs/nginx-selfsigned.key; # De configuração para gerar os certificados
         server_name localhost;
         root /var/www/html;
-        index index.php index.html index.html;
+        index index.php index.html index.html; # Essa linha define o arquivo HTML que irá aparecer ao abrir uma página onde o NGINX está configurado avisando que está tudo OK, tirando por exemplo aquele padrão de mensagem já definido como no APACHE2 e NGINX 
 
         location / {
             root /usr/share/nginx/html;  
