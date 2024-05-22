@@ -54,7 +54,7 @@ services:
       - redis
 ``` 
 
-Este arquivo Docker Compose configura diferentes serviços para suportar uma aplicação Flask com Celery, incluindo um servidor web Nginx com suporte HTTPS, um serviço Certbot para gerenciamento de certificados SSL, um servidor Redis para armazenamento de dados em cache e filas de mensagens, e os serviços principais da aplicação Flask e Celery.
+Este arquivo Docker Compose configura diferentes serviços para suportar uma aplicação Flask com Celery, incluindo um servidor web Nginx com suporte HTTPS, um serviço Certbot para gerenciamento de certificados SSL, um servidor Redis para armazenamento de dados em cache e filas de mensagens, e os serviços principais da aplicação Flask e Celery. Com ele como base você pode criar o seu próprio para um devido contexto de aplicação, sem necessidade de linguagem, apenas mantendo as configurações estabelecidas pra a aquisição de certificado SSL.
 
 
 
