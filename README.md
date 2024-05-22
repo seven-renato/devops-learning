@@ -14,5 +14,5 @@ Neste projeto, é demonstrado como configurar o GitHub Actions para automatizar 
 ## 3) Como consumir Imagens de Packages - ncga-dockercompose
 Dentro do projeto é demonstrado utilizando o Docker Compose formas de utilizar as imagens já buildadas, facilitando assim o processo de deploy da aplicação além de ajudar a manter os códigos sem inconsistências entre diferentes versões. O exemplo é dado utilizando NGINX contudo pode ser utilizado outro Web Server como Apache por exemplo, dado que está tudo utilizando Docker para implementar.
 
-## 3) Como ter HTTPS no Localhost - localhost-https
+## 4) Como ter HTTPS no Localhost - localhost-https
 Durante a leitura deste projeto em questão, você aprenderá formas de criar um ambiente de desenvolvimento local com maior similiaridade ao ambiente de desenvolvimento através da utilização de um arquivo de configuração para deploy HTTPs local, o que deve facilitar testar novas ferramentas e aproveitar dos recursos do NGINX, além de utilizar os conceitos de como consumir as imagens de packages citado no Projeto 3.  
