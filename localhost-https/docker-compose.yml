@@ -1,0 +1,47 @@
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - .docker/nginx/html:/usr/share/nginx/html
+      - .docker/nginx/html/static:/usr/share/nginx/html/static
+      - .docker/nginx/certs:/etc/nginx/certs # Definição do volume para os certificados SSL do Nginx auto-assinados
+    restart: unless-stopped
+    depends_on:
+      - ghrcapi
+    networks:
+      - internet
+
+  redis:
+    image: redis
+    networks:
+      - internet
+
+  ghrcapi:
+    image: ghcr.io/seven-renato/api-devops-example:latest
+    environment:
+      FLASK_APP: run
+      FLASK_DEBUG: 1
+    volumes:
+      - .docker/nginx/html/static:/app/static
+    ports:
+      - "8050:8050"
+    networks:
+      - internet
+
+  ghrc-celery-server:
+    image: ghcr.io/seven-renato/api-celery-devops-example:latest
+    environment:
+      FLASK_APP: run
+      DATABASE_URL: ${DATABASE_URL}
+    depends_on:
+      - redis
+    networks:
+      - internet
+
+networks:
+  internet:
+    external: true
