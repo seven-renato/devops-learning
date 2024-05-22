@@ -98,11 +98,11 @@ http {
         }
         
         location /api/ {
-            proxy_pass http://ghrcapi:8050/;  
+            proxy_pass http://ghrcapi:8050/;   # Proxy reverso para o container da API
         }
         
         location /static {
-            root /usr/share/nginx/html; 
+            root /usr/share/nginx/html; # Serviço de arquivos estáticos, para poder acessar imagens localmente através do localhost
             autoindex on;
         }
     }
