@@ -3,6 +3,10 @@
 Este projeto apresenta uma configuração do Docker Compose para facilitar o consumo de imagens Docker já disponíveis em um registro privado, neste caso, no GitHub Container Registry (GHCR). Ele utiliza serviços como Nginx, Certbot, Redis, Flask e Celery para exemplificar um ambiente de desenvolvimento e produção.
 
 ## Configuração do Docker Compose
+Abaixo é demonstrado um Docker Compose de exemplo para consumir as imagens já buildadas disponibilizadas através dos Packages, servido dessa forma como um exemplo possível de ser seguido para pegar as imagens e colocar elas para rodarem sem ter nenhum tipo de arquivo presente na máquina.
+
+É interessante perceber que dessa forma podemos esconder nosso código fonte dentro do servidor, dificultando assim o ataque de invasores e também tornando mais fiel e rápido o deploy das mudanças, definindo assim um CI/CD(ntegração contínua/entrega ou implantação contínua, é uma prática de desenvolvimento de software habilitada pela automação) melhor e mais coeso. 
+
 ```yaml
 version: '3.8' # Versão do Docker Compose
 
