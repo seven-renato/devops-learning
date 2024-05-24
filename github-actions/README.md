@@ -44,6 +44,7 @@ Para utilizar este workflow, siga estas etapas:
 - Este é apenas um exemplo de workflow. Você pode adaptá-lo às suas necessidades específicas.
 - Certifique-se de ter o Docker instalado no runner do GitHub Actions.
 - Substitua os valores das variáveis de ambiente pelas suas informações.
+- JAMAIS coloque seu token de acesso de forma exposta no seu repositório, isso pode gerar danos ao projeto além de acessos a sua conta de invasores.
 
 ## Melhorias Adicionais
 
