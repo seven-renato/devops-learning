@@ -27,7 +27,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }} # Utiliza o GHCR como registry
           username: ${{ github.actor }} 
-          password: ghp_XkdpPTG0t32193210kdawokdwa3218217321=0R44a3215g7o7M # Token de acesso do GitHub
+          password: ${{ secrets.GITHUB_TOKEN }} # Exemplo: ghp_XkdpPTG0t32193210kdawokdwa3218217321=0R44a3215g7o7M # Token de acesso do GitHub --- NÃO COLOCAR NESSE FORMATO - Use os Secrets  ---
 
       - name: Extract metadata (tags, labels) for Docker # Passo para extrair metadados das imagens Docker
         id: meta
