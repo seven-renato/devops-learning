@@ -35,7 +35,7 @@ O workflow utiliza as seguintes variáveis de ambiente:
 Para utilizar este workflow, siga estas etapas:
 
 1. Crie um token de acesso pessoal no GitHub com as permissões `packages:write` e `contents:read`.
-2. Adicione a variável `ghp_XkdpPTG0dwapldwa321030dawokadw` ao seu repositório como um segredo do GitHub, substituindo-a pelo seu token de acesso.
+2. Adicione o token secreto criado (exemplo: `ghp_XkdpPTG0dwapldwa321030dawokadw`) ao seu repositório como um Secret do GitHub, substituindo-a pelo seu token de acesso assim como seria feito em uma variável de ambiente.
 3. Defina as variáveis de ambiente `REGISTRY`, `REPO`, `FLASK_IMAGE_NAME` e `CELERY_IMAGE_NAME` no seu workflow.
 4. Faça um push para a branch principal (`main`) para acionar o workflow.
 
