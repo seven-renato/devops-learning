@@ -30,7 +30,7 @@ func dumpHandler(w http.ResponseWriter, r *http.Request) {
 
 	println(timestamp)
 
-	backupPath := fmt.Sprintf("/home/dev/server/backup/backup_db_%s.dump", timestamp)
+	backupPath := fmt.Sprintf("/backup/backup_db_%s.dump", timestamp)
 
 	cmd := exec.Command("docker", "run", "--rm",
 		"-e", fmt.Sprintf("PGPASSWORD=%s", password),
