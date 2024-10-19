@@ -14,6 +14,13 @@ type Response struct {
 	Error   string `json:"error,omitempty"`
 }
 
+
+func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
+	// Retorna 200 OK se o servidor estiver online(Pipeline Jenkins)
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(Response{Message: "Server is online"})
+}
+
 func dumpHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
@@ -58,6 +65,7 @@ func dumpHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	http.HandleFunc("/", healthCheckHandler)
 	http.HandleFunc("/dump", dumpHandler)
 	fmt.Println("Server is running on port 5000...")
 	fmt.Println(os.Getwd())
