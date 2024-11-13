@@ -5,7 +5,7 @@ Repositório que foca em salvar aprendizados relacionados ao estudo de Devops, a
 Este repositório contém uma série de projetos e exemplos que abordam diferentes aspectos de desenvolvimento e operações (DevOps). Abaixo está um resumo de cada projeto presente neste repositório:
 Obs: Todos os repositórios possuem README próprios que explicam o processo para chegar ao resultado final da aplicação.
 
-## 1) Configuração de Servidor HTTPS com Nginx - nginx-configuration
+## 1) Configuração de Servidor HTTPS com Nginx - nginx-configuration 
 Demonstra-se como configurar um servidor web seguro utilizando o Nginx com suporte HTTPS. Ele inclui arquivos de configuração para o Nginx e Docker, bem como instruções sobre como configurar certificados SSL com o Certbot. O servidor é configurado para lidar com conexões HTTP e HTTPS, redirecionando automaticamente solicitações HTTP para HTTPS. Além disso, inclui configurações para servir conteúdo estático e proxy reverso para uma API.
 
 ## 2) GitHub Actions para Construir e Publicar Imagens Docker - github-actions
