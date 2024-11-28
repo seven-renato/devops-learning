@@ -1,5 +1,5 @@
 # devops-learning
-Repositório que foca em salvar aprendizados relacionados ao estudo de Devops, aprendidos durante as experiências profissionais e estudos.
+Repositório que tem como objetivo principal em salvar aprendizados relacionados ao estudo de Devops, aprendidos durante as experiências profissionais e estudos.
 
 # Projetos Demonstrados
 Este repositório contém uma série de projetos e exemplos que abordam diferentes aspectos de desenvolvimento e operações (DevOps). Abaixo está um resumo de cada projeto presente neste repositório:
